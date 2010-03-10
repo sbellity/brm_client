@@ -7,7 +7,8 @@ module BrmClient
       @sequence_number += 1
     end
     
-    attr_reader :gateway, :application, :facet_id, :user_id
+    attr_reader :gateway, :application
+    attr_accessor :facet_id, :user_id
     
     def initialize(application, gateway_type, *args)
      @application = application
