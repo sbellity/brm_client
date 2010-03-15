@@ -42,8 +42,6 @@ module BrmClient
         event["context"]["userID"] = user_id
       end
       
-      puts "timestamp_format : #{@options[:timestamp_format]}"
-      
       timestamp = case @options[:timestamp_format]
         when "timestamp" then Time.now.to_i * 1000
         when "string" then (Time.now.to_i * 1000).to_s
