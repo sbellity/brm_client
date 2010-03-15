@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "brm_client.gemspec",
      "lib/brm_client.rb",
      "lib/brm_client/event.rb",
      "lib/brm_client/gateway.rb",
