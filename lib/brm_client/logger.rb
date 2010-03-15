@@ -10,10 +10,13 @@ module BrmClient
     attr_reader :gateway, :application
     attr_accessor :facet_id, :user_id
     
-    def initialize(application, gateway_type, *args)
+    def initialize(application, gateway_options = {}, *opts)
      @application = application
-     gateway_options = args.extract_options! || {}
-     gateway_options[:application] = application
+     @options = {
+       :timestamp_format => "time"
+     }.merge(opts.extract_options! || {})
+     gateway_type = gateway_options.delete("type") || "File"
+     gateway_options[:application] ||= application
      @gateway = BrmClient::Gateway.const_get(gateway_type).new(gateway_options)
     end
     
@@ -38,10 +41,19 @@ module BrmClient
         event["data"]["agent"] ||= {:id => user_id, :type => "user"}
         event["context"]["userID"] = user_id
       end
+      
+      puts "timestamp_format : #{@options[:timestamp_format]}"
+      
+      timestamp = case @options[:timestamp_format]
+        when "timestamp" then Time.now.to_i * 1000
+        when "string" then (Time.now.to_i * 1000).to_s
+        else Time.now
+      end
+      
       event["metaData"] = {
-        "timestamp" => Time.now.to_i * 1000,
         "eventName"  => event_name,
         "application" => application,
+        "timestamp" => timestamp,
         "loggerVersion" => VERSION,
         "loggerType" => "ruby",
         "sequenceNumber" => sequence_number
@@ -50,8 +62,6 @@ module BrmClient
       
       send_event event
     end
-    
-    
     
   end
 end

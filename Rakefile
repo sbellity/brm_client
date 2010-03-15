@@ -17,7 +17,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "brm_client"
     gem.summary = "BRM Event logging client"
-    gem.description = ""
+    gem.description = "BRM Event logging client library"
     gem.email = "sbellity@gmail.com"
     gem.homepage = "http://github.com/sbellity/brm_client"
     gem.authors = ["Stephane Bellity"]
