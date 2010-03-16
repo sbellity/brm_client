@@ -5,10 +5,9 @@ module BrmClient
     class Mongo
       attr_reader :connection, :collection
       def initialize opts
-        @connection = ::Mongo::Connection.new({
-          :host => opts[:host] || "localhost",
-          :port => opts[:port] || ::Mongo::Connection::DEFAULT_PORT
-        })
+        host = opts[:host] || "localhost"
+        port = opts[:port] || ::Mongo::Connection::DEFAULT_PORT
+        @connection = ::Mongo::Connection.new(host, port)
         @collection = @connection.db(opts[:db] || opts[:application]).collection(opts[:collection] || "logs")
       end
       
