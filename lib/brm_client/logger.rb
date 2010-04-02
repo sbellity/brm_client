@@ -15,7 +15,7 @@ module BrmClient
      @options = {
        :timestamp_format => "time"
      }.merge(opts.extract_options! || {})
-     gateway_type = gateway_options.delete("type") || "File"
+     gateway_type = gateway_options.delete(:type) || "File"
      gateway_options[:application] ||= application
      @gateway = BrmClient::Gateway.const_get(gateway_type).new(gateway_options)
     end
