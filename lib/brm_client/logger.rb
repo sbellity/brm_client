@@ -13,7 +13,7 @@ module BrmClient
     def initialize(application, gateway_options = {}, *opts)
      @application = application
      @options = {
-       :timestamp_format => "time"
+       :timestamp_format => "timestamp"
      }.merge(opts.extract_options! || {})
      gateway_type = gateway_options.delete(:type) || "File"
      gateway_options[:application] ||= application
