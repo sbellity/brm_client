@@ -10,11 +10,11 @@ module BrmClient
     attr_reader :gateway, :application
     attr_accessor :facet_id, :user_id
     
-    def initialize(application, gateway_options = {}, *opts)
+    def initialize(application, gateway_options = {}, opts={})
      @application = application
      @options = {
        :timestamp_format => "timestamp"
-     }.merge(opts.extract_options! || {})
+     }.merge(opts)
      gateway_type = gateway_options.delete(:type) || "File"
      gateway_options[:application] ||= application
      @gateway = BrmClient::Gateway.const_get(gateway_type).new(gateway_options)
@@ -43,8 +43,9 @@ module BrmClient
       end
       
       timestamp = case @options[:timestamp_format]
-        when "timestamp" then Time.now.to_i * 1000
-        when "string" then (Time.now.to_i * 1000).to_s
+        when "timestamp" then Time.now.to_i
+        when "string" then (Time.now.to_i).to_s
+        when "time" then Time.now
         else Time.now
       end
       
