@@ -67,3 +67,4 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<activesupport>, [">= 0"])
   end
 end
+
