@@ -1,8 +1,8 @@
 module BrmClient
   module Gateway
     class Debug
-      def initialize logger = nil
-        @logger = logger
+      def initialize opts
+        @logger = opts[:logger]
       end
       
       def disconnect

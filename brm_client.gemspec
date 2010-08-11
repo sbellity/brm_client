@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
      "lib/brm_client/event.rb",
      "lib/brm_client/gateway.rb",
      "lib/brm_client/gateway/amqp.rb",
+     "lib/brm_client/gateway/debug.rb",
      "lib/brm_client/gateway/file.rb",
      "lib/brm_client/gateway/http.rb",
      "lib/brm_client/gateway/mongo.rb",

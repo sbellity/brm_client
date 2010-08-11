@@ -33,7 +33,7 @@ module BrmClient
     def event(event_name, data=nil, context=nil, event_ref="")
       event = HashWithIndifferentAccess.new
       event["data"] = data || {}
-      event["context"] ||= {}
+      event["context"] = context || {}
       
       event["data"]["agent"] = {:id => facet_id, :type => "facet"} if facet_id
       
