@@ -9,12 +9,7 @@ module BrmClient
       end
       
       def send_event e
-        dbg = "# BRM Event : #{e.inspect}"
-        if !@logger.nil?
-          @logger.info dbg
-        else
-          puts dbg
-        end
+        @logger.info "# BRM Event : #{e.inspect}" unless @logger.nil?
       end
       
     end
