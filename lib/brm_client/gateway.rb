@@ -1,3 +1,5 @@
 require "brm_client/gateway/amqp"
 require "brm_client/gateway/mongo"
 require "brm_client/gateway/file"
+require "brm_client/gateway/http"
+require "brm_client/gateway/debug"

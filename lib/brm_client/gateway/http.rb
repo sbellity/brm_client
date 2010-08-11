@@ -7,7 +7,8 @@ module BrmClient
       def initialize opts
         host = opts[:host]
         port = opts[:port]
-        @endpoint_url = "http://#{host}:#{port}/s.php"
+        path = opts[:path] || ""
+        @endpoint_url = "http://#{host}:#{port}/#{path}"
         @timeout = opts[:timeout] || 300
       end
       
@@ -16,7 +17,7 @@ module BrmClient
       
       def send_event e
         options = {
-          :body => e.to_json,
+          :params => e,
           :timeout => @timeout
         }
         request = Typhoeus::Request.post(@endpoint_url, options)
