@@ -1,16 +1,6 @@
 module BrmClient
   module Event
-    
-  
-    def message type, recipients, msg, context=nil, event_ref=nil
-      data = {
-        "message" => msg,
-        "recipients" => recipients,
-        "type" => type
-      }
-      event "Message", data, context, event_ref
-    end
-    
+        
     def action(type, context=nil, event_ref="")
       event "Action", { "type" => type }, context, event_ref
     end
