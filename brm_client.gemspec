@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{brm_client}
-  s.version = "0.2.2"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephane Bellity"]
-  s.date = %q{2010-08-30}
+  s.date = %q{2010-09-13}
   s.description = %q{BRM Event logging client library}
   s.email = %q{sbellity@gmail.com}
   s.extra_rdoc_files = [
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "lib/brm_client/gateway/file.rb",
      "lib/brm_client/gateway/http.rb",
      "lib/brm_client/gateway/mongo.rb",
+     "lib/brm_client/gateway/stomp.rb",
      "lib/brm_client/logger.rb",
      "spec/brm_client_spec.rb",
      "spec/spec.opts",
