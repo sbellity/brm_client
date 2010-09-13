@@ -35,10 +35,10 @@ module BrmClient
       event["data"] = data || {}
       event["context"] = context || {}
       
-      event["data"]["agent"] = {:id => facet_id, :type => "facet"} if facet_id
+      event["data"]["agent"] = {:id => facet_id.to_s, :type => "facet"} if facet_id
       
       if user_id
-        event["data"]["agent"] ||= {:id => user_id, :type => "user"}
+        event["data"]["agent"] ||= {:id => user_id.to_s, :type => "user"}
         event["context"]["userID"] = user_id
       end
       
