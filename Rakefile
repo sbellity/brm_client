@@ -23,6 +23,7 @@ begin
     gem.authors = ["Stephane Bellity"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_dependency "bunny"
+    gem.add_dependency "stomp"
     gem.add_dependency "typhoeus", ">= 0.1.31"
     gem.add_dependency "mongo", ">= 0.18.3"
     gem.add_dependency "activesupport"
