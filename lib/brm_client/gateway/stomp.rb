@@ -7,15 +7,16 @@ module BrmClient
       
       def initialize opts
         hosts = opts[:hosts] || [ opts[:host] ]
-        @client = Stomp::Client.new({ :hosts => hosts })
-        @queue = @connection.queue "reactor.#{opts[:application]}"
+        hosts.map! &:to_options
+        @client = ::Stomp::Client.new({ :hosts => hosts })
+        @queue = "/queue/#{opts[:application]}"
       end
       
       def disconnect
       end
       
       def send_event e
-        @client.send(@queue, e.to_json)
+        @client.publish(@queue, e.to_json)
       end
       
     end
