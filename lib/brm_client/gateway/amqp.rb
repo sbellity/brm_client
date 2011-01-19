@@ -7,7 +7,7 @@ module BrmClient
       
       def initialize opts
         @connection = Bunny.new({
-          :logging => opts[:logging] || true,
+          :logging => opts[:logging] || false,
           :host => opts[:host] || "localhost",
           :port => opts[:port] || 5672,
           :user => opts[:user] || "guest",
