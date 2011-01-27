@@ -18,7 +18,7 @@ module BrmClient
       
       def send_event e
         options = {
-          :params => { :destination => "", :msg => e.to_json },
+          :params => { :destination => @destination, :msg => e.to_json },
           :timeout => @timeout
         }
         request = Typhoeus::Request.post(@endpoint_url, options)
