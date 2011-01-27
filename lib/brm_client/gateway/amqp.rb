@@ -12,7 +12,7 @@ module BrmClient
           :port => opts[:port] || 5672,
           :user => opts[:user] || "guest",
           :pass => opts[:pass] || "guest",
-          :vhost => opts[:vhost] || opts[:application]
+          :vhost => opts[:vhost] || "/"
         })
         
         @connection.start
