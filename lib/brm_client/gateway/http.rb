@@ -10,6 +10,7 @@ module BrmClient
         path = opts[:path] || ""
         @endpoint_url = "http://#{host}:#{port}/#{path}"
         @timeout = opts[:timeout] || 300
+        @destination = opts[:queue] || opts[:application]
       end
       
       def disconnect
@@ -17,7 +18,7 @@ module BrmClient
       
       def send_event e
         options = {
-          :params => e,
+          :params => { :destination => "", :msg => e.to_json },
           :timeout => @timeout
         }
         request = Typhoeus::Request.post(@endpoint_url, options)
