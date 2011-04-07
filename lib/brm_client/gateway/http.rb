@@ -17,7 +17,7 @@ module BrmClient
       end
       
       def send_event e
-        @rest_client.post :destination => @destination, :msg => e.to_json
+        @rest_client.post :destination => @destination, :msg => e
       end
       
     end

@@ -31,7 +31,7 @@ module BrmClient
     end
     
     def event(event_name, data=nil, context=nil, event_ref="")
-      event = HashWithIndifferentAccess.new
+      event = ::HashWithIndifferentAccess.new
       event["data"] = data || {}
       event["context"] = context || {}
       
