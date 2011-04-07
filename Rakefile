@@ -24,7 +24,7 @@ begin
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_dependency "bunny"
     gem.add_dependency "stomp"
-    gem.add_dependency "typhoeus", ">= 0.1.31"
+    gem.add_dependency "rest-client", ">= 1.6.1"
     gem.add_dependency "mongo", ">= 0.18.3"
     gem.add_dependency "activesupport"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings

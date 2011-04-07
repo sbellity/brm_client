@@ -1,5 +1,4 @@
-require "typhoeus"
-
+require "rest_client"
 module BrmClient
   module Gateway
     class Http
@@ -11,17 +10,14 @@ module BrmClient
         @endpoint_url = "http://#{host}:#{port}/#{path}"
         @timeout = opts[:timeout] || 300
         @destination = opts[:queue] || opts[:application]
+        @rest_client = RestClient::Resource.new(@endpoint_url, :timeout => @timeout)
       end
       
       def disconnect
       end
       
       def send_event e
-        options = {
-          :params => { :destination => @destination, :msg => e.to_json },
-          :timeout => @timeout
-        }
-        request = Typhoeus::Request.post(@endpoint_url, options)
+        @rest_client.post :destination => @destination, :msg => e.to_json
       end
       
     end
