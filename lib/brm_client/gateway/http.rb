@@ -7,17 +7,17 @@ module BrmClient
         host = opts[:host]
         port = opts[:port]
         path = opts[:path] || ""
-        @endpoint_url = "http://#{host}:#{port}/#{path}"
+        @endpoint = "http://#{host}:#{port}"
         @timeout = opts[:timeout] || 300
         @destination = opts[:queue] || opts[:application]
-        @rest_client = RestClient::Resource.new(@endpoint_url, :timeout => @timeout)
+        @rest_client = RestClient::Resource.new(@endpoint, :timeout => @timeout)
       end
       
       def disconnect
       end
       
       def send_event e
-        @rest_client.post :destination => @destination, :msg => e
+        @rest_client.post :destination => @destination, :msg => e.to_json
       end
       
     end

@@ -11,13 +11,13 @@ module BrmClient
     attr_accessor :facet_id, :user_id
     
     def initialize(application, gateway_options = {}, opts={})
-     @application = application
-     @options = {
+      @application = application
+      @options = {
        :timestamp_format => "timestamp"
-     }.merge(opts)
-     gateway_type = gateway_options.delete(:type) || "File"
-     gateway_options[:application] ||= application
-     @gateway = BrmClient::Gateway.const_get(gateway_type).new(gateway_options)
+      }.merge(opts)
+      gateway_type = gateway_options.delete(:type) || "File"
+      gateway_options[:application] ||= application
+      @gateway = BrmClient::Gateway.const_get(gateway_type).new(gateway_options)
     end
     
     def disconnect
@@ -31,7 +31,7 @@ module BrmClient
     end
     
     def event(event_name, data=nil, context=nil, event_ref="")
-      event = ::HashWithIndifferentAccess.new
+      event = HashWithIndifferentAccess.new
       event["data"] = data || {}
       event["context"] = context || {}
       
